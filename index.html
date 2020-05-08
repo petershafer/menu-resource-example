@@ -4,18 +4,22 @@
     <title>Menu</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     
     <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="strapless.css">
-    <link rel="stylesheet" href="strapless.style.css">
+    <link rel="stylesheet" href="all-styles.css">
+<!--     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="strapless.cardinal.css">
+    <link rel="stylesheet" href="strapless.style.css"> -->
+<!--     <link rel="stylesheet" href="strapless.css"> -->
     
     <!-- import the webpage's javascript file -->
     <script src="/script.js" defer></script>
   </head>  
-  <body class="crosshatch-3">
+<!--   <body class="crosshatch-3"> -->
+  <body>
     
+    <div id="overlay"></div>
     <div id="page-content">
       <section id="section-breakfast">
         <h2>
@@ -74,7 +78,6 @@
         <div>
           <!-- Favorites are cloned in here -->
         </div>
-        <img src="https://cdn.glitch.com/1fe80f45-a674-448a-b8fe-3a77354f6ce2%2Fqr-code.png?v=1588812231188" />
       </section>
       <section id="section-omelettes">
         <h2>
@@ -88,7 +91,7 @@
           <aside>
             $9.95
             <br />
-            <label class="container">
+            <label class="container favorite">
               <input type="checkbox">
               <span class="checkmark"></span>
             </label>
@@ -101,7 +104,7 @@
           <aside>
             $9.95
             <br />
-            <label class="container">
+            <label class="container favorite">
               <input type="checkbox">
               <span class="checkmark"></span>
             </label>
@@ -161,8 +164,8 @@
           </p>
           <hr />
           <p>
-            <a class="button" onclick="toggleFont()">Text Size 🗚</a>
-            <a class="pageBtn button" id="btn-favorites">Favorites</a>
+            <a class="button action" onclick="toggleFont()">Text Size <span class="heavy">ᴀA</span></a>
+            <a class="pageBtn button" id="btn-favorites">Favorites ♥</a>
           </p>
         </section>
       </div>
