@@ -10,6 +10,7 @@ const pageContentStr = '#page-content';
 const menuHeaderStr = '#menu-header';
 const favoritesContainerStr = '#section-favorites div';
 const menuCheckboxStr = '[type="checkbox"]';
+const overlayStr = '#overlay';
 
 const getPageNodeStr = (id) => `#section-${id}`;
 const getPageButtonStr = (id) => `#btn-${id}`;
@@ -26,6 +27,7 @@ const menuTitle = document.querySelector(menuTitleStr);
 const favorites = document.querySelector(favoritesContainerStr);
 const menuCheckboxes = document.querySelectorAll(menuCheckboxStr);
 const firstPageButton = menuContent.querySelector(pageButtonStr);
+const overlay = document.querySelector(overlayStr);
 
 const getPageNode = (id) => document.querySelector(getPageNodeStr(id));
 const getPageButton = (id) => document.querySelector(getPageButtonStr(id));
@@ -64,18 +66,23 @@ const toggleDrawer = () => {
 }
 
 const switchPage = (id, user) => {
-  pages.forEach(el => el.style.display = 'none');
-  const title = getPageButton(id).text;
-  getPageNode(id).style.display = 'block';
-  menuTitle.innerHTML = title;
-  if (user) {
-    if (history.state.drawer) {
-      history.replaceState({id: id}, null)
-    } else {
-      history.pushState({id: id}, null)
+  closeDrawer();
+  overlay.style.display = 'block';
+  setTimeout(() => {
+    overlay.style.display = 'none';
+    pages.forEach(el => el.style.display = 'none');
+    const title = getPageButton(id).text;
+    getPageNode(id).style.display = 'block';
+    window.scrollTo(0, 0);
+    menuTitle.innerHTML = title;
+    if (user) {
+      if (history.state.drawer) {
+        history.replaceState({id: id}, null)
+      } else {
+        history.pushState({id: id}, null)
+      }
     }
-    closeDrawer();
-  }
+  }, 300);
 };
 
 const switchFontSize = (sz) => {
