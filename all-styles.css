@@ -1685,12 +1685,6 @@ footer.failure {
 #page-content main {
   display: none;
 }
-#page-content section:first-of-type,
-#page-content nav:first-of-type,
-#page-content main:first-of-type {
-  /* TODO: Make sure this matches the first button, which is used to derive the title. */
-  display: block;
-}
 #page-content blockquote {
   border-color: #C41E3A;
 }

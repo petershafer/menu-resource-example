@@ -40,6 +40,7 @@ const getMenuFavBox = (index) => document.querySelector(getMenuFavBoxStr(index))
 
 /* State */
 const drawerOpen = () => menuContent.style.height != "0px" && menuContent.style.height != "";
+let page = null;
 
 /* Utilities */
 const extractCoreId = (el) => el.id.split('-').pop();
@@ -66,6 +67,7 @@ const toggleDrawer = () => {
 }
 
 const switchPage = (id, user) => {
+  page = id;
   closeDrawer();
   overlay.style.display = 'block';
   setTimeout(() => {
@@ -152,16 +154,18 @@ pageContent.onclick = () => {
 // Menu event handlers
 pageButtons.forEach((el) => el.onclick = (e => switchPage(extractCoreId(e.target), true)));
 
-// Menu State
+// Menu/Page State
 menuTitle.innerHTML = firstPageButton.text;
-history.replaceState({id: extractCoreId(firstPageButton)}, null)
+history.replaceState({id: extractCoreId(firstPageButton)}, null);
+const pageId = extractCoreId(firstPageButton);
+getPageNode(pageId).style.display = 'block';
 
 // History management
 window.onpopstate = function(event) {
-  if (event.state && event.state.id) {
+  if (event.state && event.state.id && event.state.id != page) {
     switchPage(event.state.id);
   }
-  if (event.state && event.state.drawer != true) {
+  if (drawerOpen()) {
     closeDrawer();
   }
 }
