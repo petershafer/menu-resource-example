@@ -87,6 +87,15 @@ const switchPage = (id, user) => {
 
 const switchFontSize = (sz) => {
   document.body.style.fontSize = sz === null ? null : `${sz}px`;
+  if (drawerOpen()) {
+    menuContent.style.transition = 'none';
+    menuContent.style.height = "0px";
+    menuContent.style.height = `${menuContent.scrollHeight}px`;
+    setTimeout(() => {
+      menuContent.style.transition = 'height 0.2s';
+    }, 100);
+  }
+  localStorage.setItem("textsize", sz);
 }
 
 const toggleFont = () => {
@@ -103,12 +112,6 @@ const toggleFont = () => {
       break;
   }
   switchFontSize(fontSize);
-  menuContent.style.transition = 'none';
-  menuContent.style.height = "0px";
-  menuContent.style.height = `${menuContent.scrollHeight}px`;
-  setTimeout(() => {
-    menuContent.style.transition = 'height 0.2s';
-  }, 100)
 };
 
 const updateFavorites = (ev) => {
@@ -171,4 +174,7 @@ menuCheckboxes.forEach((el, i) => {
 });
 
 // Initialize from local storage
-// ...
+const initsize = localStorage.getItem("textsize");
+if (initsize != null && initsize != "") {
+  switchFontSize(initsize);
+}
