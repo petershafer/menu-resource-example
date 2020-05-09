@@ -161,6 +161,7 @@ const pageId = extractCoreId(firstPageButton);
 getPageNode(pageId).style.display = 'block';
 
 // History management
+history.scrollRestoration = 'manual';
 window.onpopstate = function(event) {
   if (event.state && event.state.id && event.state.id != page) {
     switchPage(event.state.id);
