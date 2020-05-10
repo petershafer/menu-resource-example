@@ -1,0 +1,12 @@
+blockquote {
+  clear: both;
+  min-height: 4em;
+}
+
+aside {
+  margin-top: 0;
+}
+
+cite {
+  min-height: 1em;
+}

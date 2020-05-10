@@ -180,6 +180,6 @@ menuCheckboxes.forEach((el, i) => {
 
 // Initialize from local storage
 const initsize = localStorage.getItem("textsize");
-if (initsize != null && initsize != "") {
+if (initsize != "null" && initsize != "") {
   switchFontSize(initsize);
 }
